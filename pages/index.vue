@@ -1,6 +1,5 @@
 <template>
   <div v-if="user">
-    <p>{{ $store.state.currentUser.id }}</p>
     <AddTodo @submit="addTodo" />
     <TodoList :todos="todos" />
   </div>
