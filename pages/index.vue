@@ -1,7 +1,7 @@
 <template>
   <div v-if="user">
     <AddTodo @submit="addTodo" />
-    <TodoList :todos="todos" />
+    <TodoList :todos="user.todos" />
   </div>
 </template>
 
@@ -29,10 +29,11 @@ export default {
   methods: {
     async addTodo(todo) {
       const { data } = await axios.post("/v1/todos", { todo });
-      // this.$store.commit("setUser", {
-      //   ...this.user,
-      //   todos: [...this.user.todos, data]
-      // });
+      // ユーザー（とそれに紐づくTodo）を読み込み、TodoListを最新の状態に更新
+      this.$store.commit("setUser", {
+        ...this.user,
+        todos: [...this.user.todos, data]
+      });
     }
   }
 };
