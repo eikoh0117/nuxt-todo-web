@@ -13,6 +13,11 @@ import "loaders.css";
 export default {
   data() {
     return {};
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    }
   }
 };
 </script>

@@ -66,6 +66,13 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(res => {
+          this.$store.commit("setSuccessMessage", {
+            status: true,
+            message: "登録が完了しました"
+          });
+          setTimeout(() => {
+            this.$store.commit("setSuccessMessage", {});
+          }, 2000);
           const user = {
             email: res.user.email,
             name: this.name,

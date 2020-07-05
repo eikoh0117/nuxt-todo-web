@@ -29,6 +29,15 @@ export default {
   methods: {
     async addTodo(todo) {
       const { data } = await axios.post("/v1/todos", { todo });
+      if (data) {
+        this.$store.commit("setSuccessMessage", {
+          status: true,
+          message: "投稿に成功しました"
+        });
+        setTimeout(() => {
+          this.$store.commit("setSuccessMessage", {});
+        }, 2000);
+      }
       // ユーザー（とそれに紐づくTodo）を読み込み、TodoListを最新の状態に更新
       this.$store.commit("setUser", {
         ...this.user,
