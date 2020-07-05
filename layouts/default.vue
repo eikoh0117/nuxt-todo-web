@@ -1,5 +1,8 @@
 <template>
   <v-app dark>
+    <div>
+      <Loading></Loading>
+    </div>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -63,7 +66,11 @@
 </template>
 
 <script>
+import Loading from "@/components/Loading";
 export default {
+  components: {
+    Loading
+  },
   data() {
     return {
       clipped: false,
@@ -72,7 +79,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Todo App" //追加
+      title: "Todo App"
     };
   },
   computed: {
