@@ -10,6 +10,9 @@ export default {
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
+  router: {
+    middleware: ["router-guard"]
+  },
   target: "server",
   /*
    ** Headers of the page
